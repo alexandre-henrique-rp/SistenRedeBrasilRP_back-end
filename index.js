@@ -195,6 +195,6 @@ app.delete('/cliente/apagar/:id', function (req, res) {
 
 
 
-app.listen(3004, function () {
+app.listen(process.env.PORT || 3004, function () {
   console.log('servidor em execução')
 });
