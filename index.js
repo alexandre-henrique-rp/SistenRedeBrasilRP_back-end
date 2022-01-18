@@ -34,7 +34,6 @@ app.post('/send/email', function (req, res) {
     port: process.env.EMAIL_PORT,
     secureConnection: false,
     requireTLS: true,
-    service: "gmail",
     auth: {
       type: 'OAuth2',
       user: process.env.EMAIL_USER,
