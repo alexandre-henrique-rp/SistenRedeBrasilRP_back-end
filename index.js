@@ -35,10 +35,8 @@ app.post('/send/email', function (req, res) {
     secureConnection: false,
     requireTLS: true,
     auth: {
-      type: 'OAuth2',
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD,
-      accessToken: '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'
     },
   })
   transporter.sendMail({
