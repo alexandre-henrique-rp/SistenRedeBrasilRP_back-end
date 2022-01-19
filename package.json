@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines":{
+    "node": "16.13.1",
+    "npm": "8.1.2"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MTI",
   "dependencies": {
     "axios": "^0.24.0",
     "cors": "^2.8.5",
@@ -18,8 +22,5 @@
     "mysql": "^2.18.1",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15"
-  },
-  "engines": {
-    "node": "16.13.1"
   }
 }
