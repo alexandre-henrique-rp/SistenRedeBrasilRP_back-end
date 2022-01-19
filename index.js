@@ -54,7 +54,7 @@ app.post('/send/email', function (req, res) {
     .then(info => {
       res.status(200).send(info)
     }).catch(error => {
-      res.status(500).send(error)
+      res.status(550).send(error)
       console.error('Email incorreto')
     })
 });
