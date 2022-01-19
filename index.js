@@ -45,7 +45,7 @@ app.post('/send/email', function (req, res) {
   })
   transporter.sendMail({
     from: process.env.EMAIL_USER,
-    // to: email,
+    to: email,
     to: "alexandreredebrasil@gmail.com",
     subject: '"Urgente" O seu certificado corre o risco de nao funcionar mais',
     // text: "Prezado Cliente \n \nEstamos entrando em contato para informar que o seu Certificado digital \nModelo: <strong>" + req.body.tipoCD + ". - " + req.body.titulo + ",</strong>\n<strong>" + req.body.titulo_doc + "</strong> \nExpira " + req.body.dia + "          " + req.body.vctoCD.substr(8, 2) + "/" + req.body.vctoCD.substr(5, 2) + "/" + req.body.vctoCD.substr(0, 4) + "            \nfc:" + req.body.id + "       \n \nNão deixe para a última hora, ligue agora          \npara (16) 3325-4134 e renove o seu certificado.          \nAtenciosamente Equipe Rede Brasil Rp",
@@ -54,7 +54,7 @@ app.post('/send/email', function (req, res) {
     .then(info => {
       res.status(200).send(info)
     }).catch(error => {
-      res.status(550).send(error)
+      res.status(500).send(error)
       console.error('Email incorreto')
     })
 });
