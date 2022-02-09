@@ -179,6 +179,16 @@ app.get('/cliente-now', function (req, res) {
 
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Get agenda
+
+app.get('/agendados', function (req, res) {
+  conn.query('SELECT id, dt_agenda, hr_agenda, validacao, vctoCD, tipoCD, telefone, email, IF(tipocd LIKE "%J%", razaosocial, nome) AS titulo, CASE WHEN tipocd LIKE "%J%" THEN cnpj WHEN tipocd LIKE "%F%" THEN cpf END as titulo_doc FROM fcweb WHERE dt_agenda <> "0000-00-00" and hr_agenda <> "00:00:00" ORDER BY hr_agenda asc', function (erro, resultado, campos) {
+    res.json(resultado);
+  });
+});
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 // Delete
