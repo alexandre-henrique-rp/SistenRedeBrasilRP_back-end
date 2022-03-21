@@ -1,6 +1,6 @@
+require('dotenv').config();
 const express = require('express'); //chamando a biblioteca express //
 const cors = require('cors');
-require('dotenv').config();
 const mysql = require('mysql'); //chamando a biblioteca mysql
 const nodemailer = require('nodemailer');
 const axios = require('axios');
@@ -15,10 +15,18 @@ const conn = mysql.createConnection({   //solicitação de conexão
 
 conn.connect(); //ligar a conexão com mysql
 
+app.use((req, res, next) => {
+  //Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
+  res.header("Access-Control-Allow-Origin", "*");
+  //Quais são os métodos que a conexão pode realizar na API
+  res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+  app.use(cors());
+  next();
+});
 
 const app = express();
 
-app.use(cors())
+// app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
@@ -89,10 +97,6 @@ app.post('/send/whatsapp', async function (req, res) {
       console.error({telefone})
     })
 });
-
-
-
-
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Listar
