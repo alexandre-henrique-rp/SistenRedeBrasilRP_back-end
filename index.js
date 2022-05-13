@@ -7,22 +7,22 @@ const axios = require('axios');
 
 
 const conn = mysql.createConnection({   //solicitação de conexão
-  host: process.env.HOST,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
 });
 
 conn.connect(); //ligar a conexão com mysql
 
-app.use((req, res, next) => {
-  //Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
-  res.header("Access-Control-Allow-Origin", "*");
-  //Quais são os métodos que a conexão pode realizar na API
-  res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
-  app.use(cors());
-  next();
-});
+// app.use((req, res, next) => {
+//   //Qual site tem permissão de realizar a conexão, no exemplo abaixo está o "*" indicando que qualquer site pode fazer a conexão
+//   res.header("Access-Control-Allow-Origin", "*");
+//   //Quais são os métodos que a conexão pode realizar na API
+//   res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+//   app.use(cors());
+//   next();
+// });
 
 const app = express();
 
