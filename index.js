@@ -75,14 +75,14 @@ app.post('/send/whatsapp', async function (req, res) {
 
   let telefone = req.body.telefone;
   let sms = req.body.smg;
-  
-    const requestOptionsDefault = {
-      headers: {
-        "access-token": process.env.ACCESS_TOKEN,
-        "Content-Type": "application/json"
-      },
-      redirect: 'follow'
-    };
+
+  const requestOptionsDefault = {
+    headers: {
+      "access-token": process.env.ACCESS_TOKEN,
+      "Content-Type": "application/json"
+    },
+    redirect: 'follow'
+  };
   axios.post("https://api.zapstar.com.br/core/v2/api/chats/send-text", JSON.stringify({
     "number": 55 + telefone,
     // "number": 55169898247675,
@@ -94,7 +94,7 @@ app.post('/send/whatsapp', async function (req, res) {
     .catch(function (error) {
       res.status(400).send(error.data)
       console.error('Esse numero nao recebe mensagem')
-      console.error({telefone})
+      console.error({ telefone })
     })
 });
 
@@ -198,6 +198,12 @@ app.get('/agendados', function (req, res) {
 
 app.post('/log-error', function (req, res) {
   conn.query('INSERT INTO log_error (log, ref) VALUES ("' + req.body.log + '", "' + req.body.ref + '")', function (erro, resultado, campos) {
+    res.json(resultado);
+  });
+});
+
+app.get('/log-error/get', function (req, res) {
+  conn.query('SELECT * FROM log_error WHERE DATE_FORMAT(reg ,"%Y-%m-%d") = CURDATE()', function (erro, resultado, campos) {
     res.json(resultado);
   });
 });
