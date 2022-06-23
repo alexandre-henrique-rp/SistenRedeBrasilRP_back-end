@@ -26,7 +26,7 @@ conn.connect(); //ligar a conexão com mysql
 
 const app = express();
 
-// app.use(cors())
+app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
@@ -223,6 +223,6 @@ app.delete('/cliente/apagar/:id', function (req, res) {
 
 
 
-app.listen(process.env.SERVE_PORT || 3005, function () {
+app.listen(process.env.PORT || 3005, function () {
   console.log('servidor em execução')
 });
