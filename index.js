@@ -222,7 +222,6 @@ app.delete('/cliente/apagar/:id', function (req, res) {
 });
 
 
-
 app.listen(process.env.PORT || 3005, function () {
   console.log('servidor em execução')
 });
