@@ -203,7 +203,7 @@ app.post('/log-error', function (req, res) {
 });
 
 app.get('/log-error/get', function (req, res) {
-  conn.query('SELECT * FROM log_error WHERE DATE_FORMAT(reg ,"%Y-%m-%d") = CURDATE()', function (erro, resultado, campos) {
+  conn.query('SELECT * FROM log_error WHERE DATE(reg) = CURDATE()', function (erro, resultado, campos) {
     res.json(resultado);
   });
 });
